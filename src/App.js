@@ -34,6 +34,34 @@ function App() {
     if (e.key === 'Enter') fetchWeather();
   };
 
+  const fetchByLocation = () => {
+    if (!navigator.geolocation) {
+      setError('Geolocation is not supported by your browser.');
+      return;
+    }
+    setLoading(true);
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          const res = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+          );
+          setWeather(res.data);
+          setSubmittedCity(res.data.name);
+          setCity(res.data.name);
+        } catch (err) {
+          setError('Could not fetch weather for your location.');
+        }
+        setLoading(false);
+      },
+      () => {
+        setError('Location access denied.');
+        setLoading(false);
+      }
+    );
+  };
+
   const getBackground = () => {
     if (!weather) return 'default';
     const condition = weather.weather[0].main;
@@ -49,15 +77,16 @@ function App() {
     <div className={`App ${getBackground()}`}>
       <h1>🌤 Weather App</h1>
       <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Enter a city..."
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
-        <button onClick={fetchWeather}>Search</button>
-      </div>
+    <input
+    type="text"
+    placeholder="Enter a city..."
+    value={city}
+    onChange={(e) => setCity(e.target.value)}
+    onKeyPress={handleKeyPress}
+  />
+  <button onClick={fetchWeather}>Search</button>
+  <button onClick={fetchByLocation}>📍 My Location</button>
+</div>
 
       {loading && <p className="loading">Loading...</p>}
       {error && <p className="error">{error}</p>}
