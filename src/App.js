@@ -129,10 +129,19 @@ return (
           onKeyPress={handleKeyPress}
         />
         <button className="btn-search" onClick={fetchWeather}>Search</button>
-        <button className="btn-location" onClick={fetchByLocation}>📍</button>
-        <button className="btn-voice" onClick={startVoiceSearch}>
-          {listening ? '🎤' : '🎙'}
-        </button>
+       <button className="btn-location" onClick={fetchByLocation}>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M12 21s-7-5.686-7-11a7 7 0 1114 0c0 5.314-7 11-7 11z" />
+    <circle cx="12" cy="10" r="2.5" />
+  </svg>
+</button>
+<button className="btn-voice" onClick={startVoiceSearch}>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="9" y="2" width="6" height="11" rx="3" />
+    <path d="M5 10a7 7 0 0014 0M12 19v3" />
+  </svg>
+</button>
+
       </div>
 
       {loading && <p className="loading">Fetching weather...</p>}
@@ -149,36 +158,60 @@ return (
           <p className="temp">{Math.round(weather.main.temp)}°</p>
           <p className="weather-desc">{weather.weather[0].description}</p>
           <div className="details">
-            <div className="detail-item">
-              <p className="detail-label">💧 Humidity</p>
-              <p className="detail-value">{weather.main.humidity}%</p>
-            </div>
-            <div className="detail-item">
-              <p className="detail-label">🌬 Wind</p>
-              <p className="detail-value">{weather.wind.speed} m/s</p>
-            </div>
-            <div className="detail-item">
-              <p className="detail-label">🔵 Pressure</p>
-              <p className="detail-value">{weather.main.pressure} hPa</p>
-            </div>
-            <div className="detail-item">
-              <p className="detail-label">🌅 Sunrise</p>
-              <p className="detail-value">{new Date(weather.sys.sunrise * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-            </div>
+          <div className="detail-item">
+  <p className="detail-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style={{verticalAlign: 'middle', marginRight: '4px'}}>
+      <path d="M12 2C8 8 5 11.5 5 15a7 7 0 0014 0c0-3.5-3-7-7-13z" />
+    </svg>
+    Humidity
+  </p>
+  <p className="detail-value">{weather.main.humidity}%</p>
+</div>
+<div className="detail-item">
+  <p className="detail-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{verticalAlign: 'middle', marginRight: '4px'}}>
+      <path d="M3 8h11a3 3 0 100-6M3 16h15a3 3 0 110 6M3 12h8" />
+    </svg>
+    Wind
+  </p>
+  <p className="detail-value">{weather.wind.speed} m/s</p>
+</div>
+<div className="detail-item">
+  <p className="detail-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{verticalAlign: 'middle', marginRight: '4px'}}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 8v4l3 2" />
+    </svg>
+    Pressure
+  </p>
+  <p className="detail-value">{weather.main.pressure} hPa</p>
+</div>
+<div className="detail-item">
+  <p className="detail-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{verticalAlign: 'middle', marginRight: '4px'}}>
+      <circle cx="12" cy="17" r="4" />
+      <path d="M3 17h18M5 13l1.5-2M19 13l-1.5-2M9 9l1-2M15 9l-1-2" />
+    </svg>
+    Sunrise
+  </p>
+  <p className="detail-value">{new Date(weather.sys.sunrise * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+</div>
+
           </div>
         </div>
       )}
 
       {airQuality && (
         <div className="aqi-card">
-          <h3>🌫 Air Quality</h3>
-          <p className="aqi-value">
-            {airQuality === 1 && '😊 Good'}
-            {airQuality === 2 && '🙂 Fair'}
-            {airQuality === 3 && '😐 Moderate'}
-            {airQuality === 4 && '😷 Poor'}
-            {airQuality === 5 && '🤢 Very Poor'}
-          </p>
+          <h3>AIR QUALITY</h3>
+<p className="aqi-value">
+  {airQuality === 1 && 'Good'}
+  {airQuality === 2 && 'Fair'}
+  {airQuality === 3 && 'Moderate'}
+  {airQuality === 4 && 'Poor'}
+  {airQuality === 5 && 'Very Poor'}
+</p>
+
           <p className="aqi-desc">
             {airQuality === 1 && 'Great air quality — enjoy the outdoors!'}
             {airQuality === 2 && 'Air quality is acceptable.'}
