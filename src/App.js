@@ -29,10 +29,13 @@ function App() {
       const aqRes = await axios.get(
   `https://api.openweathermap.org/data/2.5/air_pollution?lat=${res.data.coord.lat}&lon=${res.data.coord.lon}&appid=${API_KEY}`);
 setAirQuality(aqRes.data.list[0].main.aqi);
-    } catch (err) {
+  } catch (err) {
       setError('City not found. Please try again.');
       setWeather(null);
+      setAirQuality(null);
+      setSubmittedCity('');
     }
+
     setLoading(false);
   };
 
@@ -95,7 +98,11 @@ setAirQuality(aqRes.data.list[0].main.aqi);
       },
       () => {
         setError('Location access denied.');
+        setWeather(null);
+        setAirQuality(null);
+        setSubmittedCity('');
         setLoading(false);
+
       }
     );
   };
