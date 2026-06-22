@@ -203,6 +203,27 @@ return (
   </p>
   <p className="detail-value">{new Date(weather.sys.sunrise * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
 </div>
+<div className="detail-item">
+  <p className="detail-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{verticalAlign: 'middle', marginRight: '4px'}}>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M3 12h18M5 16l1.5 2M19 16l-1.5 2M9 19l1 2M15 19l-1 2" />
+    </svg>
+    Sunset
+  </p>
+  <p className="detail-value">{new Date(weather.sys.sunset * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+</div>
+<div className="detail-item">
+  <p className="detail-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{verticalAlign: 'middle', marginRight: '4px'}}>
+      <path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z" />
+    </svg>
+    Feels Like
+  </p>
+  <p className="detail-value">{Math.round(weather.main.feels_like)}°C</p>
+</div>
+
+
 
           </div>
         </div>
