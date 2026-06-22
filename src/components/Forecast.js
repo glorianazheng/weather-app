@@ -4,7 +4,11 @@ function Forecast({ city, apiKey }) {
   const [forecast, setForecast] = React.useState(null);
 
   React.useEffect(() => {
-    if (!city) return;
+    if (!city) {
+      setForecast(null);
+      return;
+    }
+
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`)
       .then(res => res.json())
       .then(data => {
