@@ -185,10 +185,23 @@ return (
         <div className="weather-card">
           <p className="city-name">{weather.name}, {weather.sys.country}</p>
           <img
-            className="weather-icon"
-            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-            alt="weather icon"
-          />
+  className={`weather-icon ${
+    weather.weather[0].main === 'Rain' || weather.weather[0].main === 'Drizzle'
+      ? 'weather-icon-rain'
+      : weather.weather[0].main === 'Clear'
+      ? 'weather-icon-sun'
+      : weather.weather[0].main === 'Clouds'
+      ? 'weather-icon-cloud'
+      : weather.weather[0].main === 'Snow'
+      ? 'weather-icon-snow'
+      : weather.weather[0].main === 'Thunderstorm'
+      ? 'weather-icon-thunder'
+      : ''
+  }`}
+  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+  alt="weather icon"
+/>
+
           <p className="temp">{Math.round(weather.main.temp)}°</p>
           <p className="weather-desc">{weather.weather[0].description}</p>
           <div className="details">

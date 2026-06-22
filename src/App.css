@@ -304,3 +304,53 @@ body {
   .App { padding: 24px 16px 40px; }
   .temp { font-size: 3.6rem !important; }
 }
+
+/* Weather Icon Animations */
+@keyframes rainDrop {
+  0% { transform: translateY(-3px); }
+  50% { transform: translateY(3px); }
+  100% { transform: translateY(-3px); }
+}
+
+@keyframes sunSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes sunPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cloudFloat {
+  0% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  100% { transform: translateX(-3px); }
+}
+
+@keyframes snowFall {
+  0% { transform: translateY(-3px) rotate(0deg); }
+  100% { transform: translateY(3px) rotate(180deg); }
+}
+
+.weather-icon-rain {
+  animation: rainDrop 0.8s ease-in-out infinite;
+}
+
+.weather-icon-sun {
+  animation: sunPulse 2s ease-in-out infinite;
+}
+
+.weather-icon-cloud {
+  animation: cloudFloat 3s ease-in-out infinite;
+}
+
+.weather-icon-snow {
+  animation: snowFall 1.5s ease-in-out infinite alternate;
+}
+
+.weather-icon-thunder {
+  animation: rainDrop 0.4s ease-in-out infinite;
+}
+
