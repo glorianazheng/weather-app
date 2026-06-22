@@ -121,7 +121,34 @@ setAirQuality(aqRes.data.list[0].main.aqi);
 return (
     <div className={`App ${getBackground()}`}>
       <div className="app-header">
-        <h1>⛅ WeatherAI</h1>
+        <h1 style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Purple gradient background circle */}
+    <defs>
+      <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#8B7CF6"/>
+        <stop offset="100%" stopColor="#4834D4"/>
+      </linearGradient>
+    </defs>
+    <rect width="36" height="36" rx="10" fill="url(#logoGrad)"/>
+    {/* Sun */}
+    <circle cx="20" cy="13" r="5" fill="#FFD93D"/>
+    <line x1="20" y1="6" x2="20" y2="4" stroke="#FFD93D" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="20" y1="22" x2="20" y2="20" stroke="#FFD93D" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="13" y1="13" x2="11" y2="13" stroke="#FFD93D" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="29" y1="13" x2="27" y2="13" stroke="#FFD93D" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="15" y1="8" x2="14" y2="7" stroke="#FFD93D" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="26" y1="19" x2="25" y2="18" stroke="#FFD93D" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="26" y1="8" x2="25" y2="7" stroke="#FFD93D" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="15" y1="19" x2="14" y2="18" stroke="#FFD93D" strokeWidth="1.5" strokeLinecap="round"/>
+    {/* Cloud */}
+    <rect x="7" y="18" width="18" height="10" rx="5" fill="white"/>
+    <circle cx="11" cy="19" r="4" fill="white"/>
+    <circle cx="18" cy="17" r="5" fill="white"/>
+  </svg>
+  WeatherAI
+</h1>
+
         <span className="date-pill">
           {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
         </span>
