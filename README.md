@@ -34,7 +34,7 @@ A modern, responsive Progressive Web App (PWA) that delivers real-time weather d
 ## Getting Started
 
 1. Clone the repo
-   git clone https://github.com/your-username/weather-app.git
+   git clone https://github.com/glorianazheng/weather-app.git
 
 2. Install dependencies
    npm install
